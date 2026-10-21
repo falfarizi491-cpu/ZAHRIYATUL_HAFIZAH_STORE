@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAHRIYATUL HAFIZAH STORE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+            color: #333;
+        }
+
+        header {
+            background: #6d28d9;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 26px;
+        }
+
+        header p {
+            margin-top: 8px;
+        }
+
+        nav {
+            background: #4c1d95;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        .hero h2 {
+            color: #6d28d9;
+            margin-bottom: 10px;
+        }
+
+        .search {
+            margin-top: 20px;
+            padding: 12px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .container {
+            padding: 20px 5%;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #4c1d95;
+        }
+
+        .produk-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .produk {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px #00000015;
+        }
+
+        .produk img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .produk h3 {
+            margin: 12px 0 8px;
+        }
+
+        .produk p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .harga {
+            color: #16a34a;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background: #6d28d9;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #4c1d95;
+        }
+
+        #keranjang {
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 12px;
+        }
+
+        #daftar-keranjang p {
+            margin: 12px 0;
+        }
+
+        footer {
+            background: #4c1d95;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 35px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 800px) {
+            .produk-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .produk-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>ZAHRIYATUL HAFIZAH STORE</h1>
+        <p>Belanja Mudah, Harga Bersahabat!</p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#produk">Produk</a>
+        <a href="#keranjang">Keranjang</a>
+    </nav>
+
+    <section class="hero" id="beranda">
+        <h2>Selamat Datang di Toko Kami!</h2>
+        <p>Temukan produk pilihan dengan harga terjangkau.</p>
+
+        <input
+            type="text"
+            class="search"
+            id="cari"
+            placeholder="Cari produk..."
+            oninput="cariProduk()"
+        >
+    </section>
+
+    <section class="container" id="produk">
+        <h2>Daftar Produk</h2>
+
+        <div class="produk-list" id="daftar-produk">
+
+            <div class="produk" data-nama="sepatu sneakers">
+                <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                    alt="Sepatu Sneakers"
+                >
+                <h3>Sepatu Sneakers</h3>
+                <p>Sepatu kasual yang nyaman untuk aktivitas sehari-hari.</p>
+                <div class="harga">Rp150.000</div>
+                <button onclick="tambahKeranjang('Sepatu Sneakers', 150000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+
+            <div class="produk" data-nama="tas ransel">
+                <img
+                    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500"
+                    alt="Tas Ransel"
+                >
+                <h3>Tas Ransel</h3>
+                <p>Tas praktis untuk sekolah, kuliah, dan bepergian.</p>
+                <div class="harga">Rp120.000</div>
+                <button onclick="tambahKeranjang('Tas Ransel', 120000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+
+            <div class="produk" data-nama="jam tangan">
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+                    alt="Jam Tangan"
+                >
+                <h3>Jam Tangan</h3>
+                <p>Jam tangan modern yang cocok untuk berbagai acara.</p>
+                <div class="harga">Rp85.000</div>
+                <button onclick="tambahKeranjang('Jam Tangan', 85000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+
+            <div class="produk" data-nama="kaos polos">
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"
+                    alt="Kaos Polos"
+                >
+                <h3>Kaos Polos</h3>
+                <p>Kaos simpel dan nyaman untuk pakaian sehari-hari.</p>
+                <div class="harga">Rp50.000</div>
+                <button onclick="tambahKeranjang('Kaos Polos', 50000)">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container" id="keranjang">
+        <div id="daftar-keranjang">
+            <h2>Keranjang Belanja</h2>
+            <p>Keranjang masih kosong.</p>
+        </div>
+
+        <h3 id="total" style="margin-top: 20px;">
+            Total: Rp0
+        </h3>
+    </section>
+
+    <footer>
+        <h3>ZAHRIYATUL HAFIZAH STORE</h3>
+        <p>Nama Pemilik: ZAHRIYATUL HAFIZAH</p>
+        <p>Tugas P2 Web Programming</p>
+        <p>&copy; 2026 Zahriyatul Hafizah Store</p>
+    </footer>
+
+    <script>
+        let keranjang = [];
+
+        function rupiah(angka) {
+            return "Rp" + angka.toLocaleString("id-ID");
+        }
+
+        function tambahKeranjang(nama, harga) {
+            let produk = keranjang.find(item => item.nama === nama);
+
+            if (produk) {
+                produk.jumlah++;
+            } else {
+                keranjang.push({
+                    nama: nama,
+                    harga: harga,
+                    jumlah: 1
+                });
+            }
+
+            tampilkanKeranjang();
+            alert(nama + " berhasil ditambahkan ke keranjang!");
+        }
+
+        function tampilkanKeranjang() {
+            let daftar = document.getElementById("daftar-keranjang");
+            let totalHarga = 0;
+
+            if (keranjang.length === 0) {
+                daftar.innerHTML =
+                    "<h2>Keranjang Belanja</h2>" +
+                    "<p>Keranjang masih kosong.</p>";
+                document.getElementById("total").textContent =
+                    "Total: Rp0";
+                return;
+            }
+
+            let isi = "<h2>Keranjang Belanja</h2>";
+
+            keranjang.forEach((item, index) => {
+                let subtotal = item.harga * item.jumlah;
+                totalHarga += subtotal;
+
+                isi += `
+                    <p>
+                        ${item.nama} -
+                        ${item.jumlah} buah -
+                        ${rupiah(subtotal)}
+                        <button
+                            style="width:auto; margin-left:8px;"
+                            onclick="hapusProduk(${index})"
+                        >
+                            Hapus
+                        </button>
+                    </p>
+                `;
+            });
+
+            daftar.innerHTML = isi;
+            document.getElementById("total").textContent =
+                "Total: " + rupiah(totalHarga);
+        }
+
+        function hapusProduk(index) {
+            keranjang.splice(index, 1);
+            tampilkanKeranjang();
+        }
+
+        function cariProduk() {
+            let kataKunci = document
+                .getElementById("cari")
+                .value.toLowerCase();
+
+            let produk = document.querySelectorAll(".produk");
+
+            produk.forEach(item => {
+                let nama = item.dataset.nama;
+
+                if (nama.includes(kataKunci)) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
